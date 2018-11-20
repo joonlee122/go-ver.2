@@ -1,4 +1,4 @@
-FROM golang:1.11.2-jessie as builder
+FROM golang:1.11.2 as builder
 MAINTAINER Joon Lee joon@xponentialworks.com
 # install xz
 RUN apt-get update && apt-get install -y \
