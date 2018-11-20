@@ -1,4 +1,5 @@
-FROM golang:1.8.5-jessie as builder
+FROM golang:1.11.2-jessie as builder
+MAINTAINER Joon Lee joon@xponentialworks.com
 # install xz
 RUN apt-get update && apt-get install -y \
     xz-utils \
@@ -26,7 +27,7 @@ RUN strip --strip-unneeded main
 RUN upx main
 
 # use a minimal alpine image
-FROM alpine:3.7
+FROM alpine:3.8
 # add ca-certificates in case you need them
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 # set working directory
