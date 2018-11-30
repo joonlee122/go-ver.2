@@ -11,6 +11,7 @@ import (
 	"cloud.google.com/go/storage"
 	"time"
 	"fmt"
+	//"bufio"
 )
 
 func GetFileContentType(out *os.File) (string, error){
@@ -60,7 +61,12 @@ func write(client *storage.Client, bucket, object string) error {
 
 func main() {
 	ctx := context.Background()
-
+	
+	//Ask user for the filepath of the directory to be monitored
+//	reader := bufio.NewReader(os.Stdin)
+//	fmt.Println("Enter the filepath of the directory to monitor")
+//	filepath, _ := reader.ReadString('\n')
+	
 	//Sets your Google Cloud Platform
 	//projectID := "My practice project"
 
@@ -91,7 +97,7 @@ func main() {
 		}
 	}()
 
-	if err := w.Add("C://Users//Joon//Documents//XponentialWorks//Watched"); err != nil{
+	if err := w.Add("C:"); err != nil{
 		log.Fatalln(err)
 	}
 	log.Println("directory is being watched for new images...")
